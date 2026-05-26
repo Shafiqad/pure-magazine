@@ -408,6 +408,42 @@ figure.editorial.vignette::after {
 .aspect-cinema { aspect-ratio: 21 / 9; }
 .aspect-wide   { aspect-ratio: 16 / 9; }
 
+/* ─── Founders portrait ─── */
+.portrait-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+.portrait-wrap figure.editorial {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--hairline);
+}
+.portrait-wrap .portrait-meta {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+.portrait-wrap .portrait-meta .names {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--cream);
+  letter-spacing: 0.005em;
+}
+.portrait-wrap .portrait-meta .role {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 720px) {
+  .portrait-wrap { max-width: 100%; }
+  .portrait-wrap figure.editorial { aspect-ratio: 4 / 5; }
+}
+
 /* ─── Inline link (gold underline) ─── */
 .link-gold {
   display: inline-flex;
@@ -980,6 +1016,23 @@ figure.editorial.vignette::after {
           professional athletes, well-known personalities and frequent
           travellers who value quality, discretion and direct communication.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── FOUNDERS PORTRAIT ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="portrait-wrap reveal">
+        <figure class="editorial">
+          <img
+            src="img/anass%20en%20omar.jpeg"
+            alt="Omar Mahran and Anass Oakki, co-founders of Pure Flight, on board" />
+        </figure>
+        <div class="portrait-meta">
+          <span class="names">Omar Mahran &amp; Anass Oakki</span>
+          <span class="role">Co-founders · Pure Flight</span>
+        </div>
       </div>
     </div>
   </section>
