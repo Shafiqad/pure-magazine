@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Quiet Hours · Pure Flights Journal</title>
+<meta name="description" content="On private skies, the Costa del Sol, and the new geography of time — an editorial portrait of modern luxury travel by Pure Flights." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────
+   PURE FLIGHTS — JOURNAL VOL. I
+   The Quiet Hours
+   Design system: onyx · cream · champagne gold
+───────────────────────────────────────────────── */
+
+:root {
+  --onyx:        #0a0a0a;
+  --onyx-soft:   #111111;
+  --onyx-warm:   #161310;
+  --graphite:    #1c1c1c;
+  --hairline:    #232323;
+
+  --cream:       #f5efe2;
+  --cream-soft:  #e8e0cf;
+  --cream-muted: #b8b1a3;
+  --cream-quiet: #7d7669;
+
+  --gold:        #c9a961;
+  --gold-soft:   #b89752;
+  --gold-bright: #d9bd78;
+  --gold-glow:   rgba(201, 169, 97, 0.18);
+  --gold-line:   rgba(201, 169, 97, 0.35);
+
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-base:    420ms;
+  --dur-slow:    780ms;
+
+  --container:   1280px;
+  --measure:     640px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: var(--onyx);
+}
+
+body {
+  background: var(--onyx);
+  color: var(--cream);
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+::selection { background: var(--gold); color: var(--onyx); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Film grain overlay ─── */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+}
+
+/* ─── Top brand bar ─── */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(10,10,10,0.92), rgba(10,10,10,0));
+  backdrop-filter: blur(4px);
+}
+.brand {
+  font-family: "Cinzel", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.42em;
+  font-weight: 500;
+  color: var(--cream);
+}
+.brand .dot { color: var(--gold); margin: 0 0.5em; }
+.issue {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+  font-weight: 500;
+}
+
+/* ─── Containers ─── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  position: relative;
+}
+.measure {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+.wide {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ─── Typography ─── */
+.font-display { font-family: "Playfair Display", Georgia, serif; }
+.font-brand   { font-family: "Cinzel", "Trajan Pro", Georgia, serif; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+.eyebrow.left::after  { display: none; }
+
+.caption {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+  font-weight: 500;
+}
+
+.h-xl {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+}
+.h-lg {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+.h-md {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.italic-gold em,
+.italic-gold .ital {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.body {
+  font-size: 1.075rem;
+  line-height: 1.78;
+  font-weight: 300;
+  color: var(--cream-soft);
+}
+.body + .body { margin-top: 1.4rem; }
+
+.body em.gold { font-style: italic; color: var(--gold); }
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  padding-top: clamp(7rem, 14vw, 11rem);
+  padding-bottom: 0;
+  text-align: center;
+}
+.hero h1 {
+  margin-top: 2rem;
+}
+.hero-sub {
+  margin-top: 1.75rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  color: var(--cream-soft);
+  letter-spacing: 0.005em;
+}
+.hero-meta {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+  font-weight: 500;
+}
+.hero-meta .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.65;
+}
+
+.hero-image {
+  position: relative;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  width: 100%;
+  height: clamp(56vh, 78vh, 82vh);
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
+  animation: kenburns 26s ease-out forwards;
+}
+.hero-image::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.18) 55%, rgba(10,10,10,0.7) 100%);
+  pointer-events: none;
+}
+.hero-image .img-caption {
+  position: absolute;
+  left: 50%; bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: var(--cream-soft);
+  opacity: 0.85;
+}
+
+@keyframes kenburns {
+  0%   { transform: scale(1.04); }
+  100% { transform: scale(1.16); }
+}
+
+/* ─── Sections ─── */
+section.block { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
+section.block-tight { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+
+/* ─── Lede ─── */
+.lede {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  line-height: 1.45;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+/* ─── Ornaments ─── */
+.ornament {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  color: var(--gold);
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.ornament svg {
+  display: block;
+}
+.ornament-wrap {
+  display: flex;
+  justify-content: center;
+  margin: clamp(2.5rem, 4vw, 4rem) 0;
+}
+
+.divider-hair {
+  height: 1px;
+  background: var(--hairline);
+}
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 35%, var(--gold) 65%, transparent);
+  opacity: 0.55;
+}
+
+/* ─── Section heading ─── */
+.section-heading {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+  margin-bottom: 2rem;
+  color: var(--cream);
+}
+.section-heading em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ─── Pull quote ─── */
+.pullquote {
+  position: relative;
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+.pullquote .mark {
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 0.7;
+  display: block;
+  margin-bottom: 1rem;
+}
+.pullquote blockquote {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--cream);
+  letter-spacing: -0.008em;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.pullquote .rule {
+  width: 120px;
+  height: 1px;
+  margin: 2.5rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.7;
+}
+.pullquote .glow {
+  position: absolute;
+  pointer-events: none;
+  inset: -20% 10%;
+  height: 180%;
+  background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+/* ─── Editorial image figure ─── */
+figure.editorial {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+figure.editorial img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.06) saturate(0.88) brightness(0.94);
+}
+figure.editorial figcaption {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1.25rem;
+  color: var(--cream-soft);
+  opacity: 0.85;
+}
+figure.editorial.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(10, 10, 10, 0.7) 100%);
+  pointer-events: none;
+}
+.aspect-cinema { aspect-ratio: 21 / 9; }
+.aspect-wide   { aspect-ratio: 16 / 9; }
+
+/* ─── Inline link (gold underline) ─── */
+.link-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--gold);
+  transition: all var(--dur-base) var(--ease-out);
+  margin-top: 1.5rem;
+}
+.link-gold:hover {
+  gap: 1rem;
+  color: var(--gold-bright);
+  border-bottom-color: var(--gold-bright);
+}
+
+/* ─── Coda ─── */
+.coda {
+  text-align: center;
+}
+.coda p {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--cream-soft);
+}
+.coda p + p { margin-top: 1.25rem; }
+.coda p.final { color: var(--gold); margin-top: 1.75rem; }
+
+/* ─── Byline ─── */
+.byline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.byline .row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.byline .label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.byline .title-line {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+}
+.byline .sub-line {
+  color: var(--cream-quiet);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+/* ─── Buttons ─── */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem 2.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--onyx);
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%);
+  border-radius: 9999px;
+  border: 1px solid rgba(217, 189, 120, 0.6);
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(255, 235, 195, 0.25) inset,
+    0 8px 24px rgba(201, 169, 97, 0.25),
+    0 0 32px rgba(201, 169, 97, 0.15);
+  transition: all var(--dur-base) var(--ease-out);
+  overflow: hidden;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255, 235, 195, 0.4) inset,
+    0 10px 30px rgba(201, 169, 97, 0.4),
+    0 0 60px rgba(201, 169, 97, 0.3);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem 2.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid var(--gold-line);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--onyx);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cream-soft);
+  padding: 1rem 0;
+  position: relative;
+  transition: color var(--dur-base) var(--ease-out);
+}
+.btn-ghost::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0.5rem;
+  height: 1px; width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.btn-ghost:hover { color: var(--gold); }
+.btn-ghost:hover::after { transform: scaleX(1); }
+
+/* ─── CTA card ─── */
+.cta-card {
+  position: relative;
+  background: var(--graphite);
+  border: 1px solid var(--hairline);
+  padding: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  overflow: hidden;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.cta-card::before {
+  content: "";
+  position: absolute;
+  inset: -30% -10%;
+  height: 180%;
+  background: radial-gradient(ellipse at center, var(--gold-glow), transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--gold);
+  opacity: 0.55;
+}
+.corner.tl { top: 14px; left: 14px;  border-right: 0; border-bottom: 0; }
+.corner.tr { top: 14px; right: 14px; border-left: 0;  border-bottom: 0; }
+.corner.bl { bottom: 14px; left: 14px;  border-right: 0; border-top: 0; }
+.corner.br { bottom: 14px; right: 14px; border-left: 0;  border-top: 0; }
+
+.cta-card .actions {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 640px) {
+  .cta-card .actions { flex-direction: row; }
+}
+
+/* ─── Footer ─── */
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding: 3rem clamp(1.25rem, 4vw, 3rem);
+  background: var(--onyx-soft);
+  margin-top: 4rem;
+}
+.footer-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.footer .brand-line {
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.42em;
+  color: var(--cream);
+}
+.footer .meta-line {
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+}
+.footer .links {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-quiet);
+}
+.footer .links a:hover { color: var(--gold); }
+
+/* ─── Reveal on scroll ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ─── Mobile adjustments ─── */
+@media (max-width: 720px) {
+  .eyebrow::before, .eyebrow::after { width: 24px; }
+  .topbar { padding: 1rem 1.25rem; }
+  .brand { font-size: 0.82rem; letter-spacing: 0.36em; }
+  .issue { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ───────────────── TOP BAR ───────────────── -->
+<header class="topbar">
+  <div class="brand">PURE<span class="dot">·</span>FLIGHTS</div>
+  <div class="issue">The Journal · Vol. I</div>
+</header>
+
+<main>
+
+  <!-- ───────────────── HERO ───────────────── -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow reveal">The Journal · Volume I · Spring</span>
+      <h1 class="h-xl italic-gold reveal" style="margin-top: 2rem;">
+        The <em>Quiet</em> Hours
+      </h1>
+      <p class="hero-sub reveal">
+        On private skies, the Costa del Sol, and the new geography of time.
+      </p>
+      <div class="hero-meta reveal">
+        <span>Travel</span>
+        <span class="dot"></span>
+        <span>Editorial</span>
+        <span class="dot"></span>
+        <span>Issue 01</span>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2400&q=85"
+        alt="A private jet on the tarmac at blue hour, cabin lights warm against the dark" />
+      <span class="caption img-caption">Málaga · 21:47 · Tarmac, blue hour</span>
+    </div>
+  </section>
+
+  <!-- ───────────────── LEDE ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure reveal">
+        <p class="lede">
+          There is a certain hour — somewhere between the last meeting in Zurich
+          and the first dinner in Marbella — that has become the most valuable
+          hour in modern life. It cannot be bought outright. It can only be designed.
+        </p>
+      </div>
+
+      <div class="ornament-wrap reveal" aria-hidden="true">
+        <span class="ornament">
+          <svg width="12" height="12" viewBox="0 0 14 14">
+            <path d="M7 0 L8.2 5.8 L14 7 L8.2 8.2 L7 14 L5.8 8.2 L0 7 L5.8 5.8 Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 1 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <p class="body reveal">
+          For a particular kind of traveler, the journey is no longer the price
+          of arrival. It is the arrival itself. The car waits where the runway
+          ends. The cabin is warm. The phone, mercifully, has nothing urgent to say.
+        </p>
+        <p class="body reveal">
+          This is the territory Pure Flights has quietly made its own.
+        </p>
+
+        <h2 class="section-heading reveal" style="margin-top: 4rem;">
+          An <em>Education</em> in Stillness
+        </h2>
+
+        <p class="body reveal">
+          The first thing one notices, working with the team at Pure Flights, is
+          what is absent. There are no brochures. No pricing tables fanned across
+          a glass table. No questions about loyalty programs.
+        </p>
+        <p class="body reveal">
+          Instead, there is a conversation — measured, unhurried — about how a
+          Tuesday should feel. Whether one prefers to wake in the air or to sleep
+          through it. Whether the dog flies, too.
+        </p>
+        <p class="body reveal">
+          From that conversation comes everything else: the cabin, the route, the
+          crew, the car on the tarmac in Málaga, the chef expecting you in Sierra
+          Blanca. The choreography is invisible by design.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── PULL QUOTE 1 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="pullquote reveal">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="mark">&ldquo;</span>
+        <blockquote>
+          Luxury, properly understood, is the editing out of friction. Everything
+          else is decoration.
+        </blockquote>
+        <div class="rule"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 2 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <h2 class="section-heading reveal">
+          The <em>Cabin</em> as a Private Room
+        </h2>
+        <p class="body reveal">
+          Private aviation is often misunderstood as an upgrade. It is not. It is
+          a different category of experience entirely — closer in spirit to a
+          country house than to a commercial seat, however gilded.
+        </p>
+        <p class="body reveal">
+          But Pure Flights does not deal only in private jets. Its work spans the
+          full architecture of modern travel: a discreet first-class itinerary
+          across three continents; a business-class redemption engineered with a
+          precision that borders on art; an empty-leg charter found at the right
+          hour, for the right client, on the right Thursday.
+        </p>
+        <p class="body reveal">
+          The point is not the aircraft. The point is the hour you reclaim, and
+          the way you spend it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── IMAGE BREAK · CABIN ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <figure class="editorial vignette aspect-cinema reveal">
+        <img
+          src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=2200&q=80"
+          alt="Interior detail of a private jet cabin — burl walnut, leather, tungsten light" />
+        <figcaption class="caption">Interior · Empty leg · Northbound</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 3 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <h2 class="section-heading reveal">
+          The <em>Costa del Sol</em>, Reconsidered
+        </h2>
+        <p class="body reveal">
+          Marbella has changed. Or rather, the world has finally caught up to
+          what Marbella always was — a place where Europe softens, where business
+          is conducted on terraces rather than in towers, where the calendar
+          bends to the weather instead of the other way around.
+        </p>
+        <p class="body reveal">
+          The new arrivals are not what one might expect. They are founders
+          between rounds. Athletes in the long, second act of their careers.
+          Investors who have decided that proximity to a runway, a marina, and a
+          good cardiologist is the only triangle that truly matters.
+        </p>
+        <p class="body reveal">
+          They are not here to be seen. They are here to be left alone, beautifully.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── COAST IMAGE BREAK ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <figure class="editorial aspect-cinema reveal">
+        <img
+          src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=2400&q=80"
+          alt="Coastline at first light, Mediterranean still as glass" />
+        <figcaption class="caption">Costa del Sol · 06:14 · First light</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 4 — LUNA NOVA ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <h2 class="section-heading reveal">
+          A Different Kind of <em>Address</em>
+        </h2>
+        <p class="body reveal">
+          Luna Nova Residences, rising quietly above the coast, is the
+          architectural expression of this shift. The project does not announce
+          itself. It does not need to. The materials — travertine, smoked oak,
+          water held still in long reflective pools — speak in the lower register
+          that the new luxury prefers.
+        </p>
+        <p class="body reveal">
+          What is striking about Luna Nova is not the view, though the view is
+          considerable. It is the assumption baked into every room: that the
+          resident has somewhere else to be, and that the house should be ready,
+          instantly, for either presence or absence.
+        </p>
+        <p class="body reveal">
+          It is, in a sense, the residential counterpart to a private cabin at
+          altitude. The same logic. The same discretion. The same respect for
+          the owner&rsquo;s time.
+        </p>
+        <a
+          class="link-gold reveal"
+          href="https://lunanovaresidences.com"
+          target="_blank"
+          rel="noreferrer">
+          Luna Nova Residences
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+            <path d="M2 10 L10 2 M4 2 H10 V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── RESIDENCE IMAGE ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <figure class="editorial aspect-cinema reveal">
+        <img
+          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=80"
+          alt="Travertine interior opening onto a long reflecting pool, golden hour" />
+        <figcaption class="caption">Luna Nova · Sierra Blanca · Golden hour</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────────────── PULL QUOTE 2 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="pullquote reveal">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="mark">&ldquo;</span>
+        <blockquote>
+          The modern luxury is not what you can acquire. It is what you no longer
+          have to think about.
+        </blockquote>
+        <div class="rule"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 5 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <h2 class="section-heading reveal">
+          The <em>Concierge</em>, Reframed
+        </h2>
+        <p class="body reveal">
+          The word <em class="gold">concierge</em> has been worn thin by use.
+          Hotels claim it. Apps claim it. Credit cards claim it.
+        </p>
+        <p class="body reveal">
+          What Pure Concierge offers is older and rarer. A small team,
+          accountable to a small list of clients, with the kind of relationships
+          that take years to build — the maître d&rsquo; who remembers, the
+          captain who reroutes, the villa manager who knows that the espresso
+          machine must be Italian and the linen Belgian, and that the children
+          prefer the room with the eastern light.
+        </p>
+        <p class="body reveal">
+          It is service in the original sense of the word: a craft, practiced by
+          professionals, on behalf of people who have stopped pretending they
+          have time to manage these things themselves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── HANDS IMAGE ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <figure class="editorial vignette aspect-wide wide reveal">
+        <img
+          src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?auto=format&fit=crop&w=1800&q=80"
+          alt="A hand in a tailored cuff pouring wine at a candlelit table" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────────────── PROSE 6 ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <h2 class="section-heading reveal">
+          The <em>Geography</em> of Time
+        </h2>
+        <p class="body reveal">
+          There is a quiet revolution underway in how the well-travelled organise
+          their lives. The old map — home, office, hotel, gate — has been
+          redrawn. The new map is built around hours, not addresses. A morning
+          in London. An afternoon swim in Marbella. A dinner in Mykonos that
+          begins, somehow, at exactly the right time.
+        </p>
+        <p class="body reveal">
+          This is the world Pure Flights inhabits, and the world it makes
+          navigable. Not through technology, though there is plenty of that,
+          invisibly. But through judgment — the judgment of people who have
+          spent careers learning what a long day really requires, and what it
+          does not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── CODA ───────────────── -->
+  <section class="block">
+    <div class="container">
+      <div class="measure coda">
+        <div class="ornament-wrap reveal" aria-hidden="true">
+          <span class="ornament">
+            <svg width="12" height="12" viewBox="0 0 14 14">
+              <path d="M7 0 L8.2 5.8 L14 7 L8.2 8.2 L7 14 L5.8 8.2 L0 7 L5.8 5.8 Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </div>
+        <h2 class="section-heading reveal" style="margin-bottom: 2.5rem;">
+          <em>Coda</em>
+        </h2>
+        <p class="reveal">
+          Somewhere over the Mediterranean, the cabin lights dim. The coast
+          appears, then the lights of Marbella, scattered along the dark line
+          of the sea.
+        </p>
+        <p class="reveal">
+          The car is already there. The house is open. The week, finally, has begun.
+        </p>
+        <p class="reveal">
+          It will look, to anyone watching, like the easiest thing in the world.
+        </p>
+        <p class="final reveal">
+          That is the whole point.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── BYLINE ───────────────── -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="measure">
+        <div class="divider-hair" style="margin-bottom: 2.5rem;"></div>
+        <div class="byline">
+          <div class="row">
+            <div>
+              <span class="label">Editorial</span>
+              <div class="title-line">The Pure Journal</div>
+              <div class="sub-line">Issue 01 · Spring &mdash; Photography by archive</div>
+            </div>
+            <a class="btn-outline" href="https://www.pure-concierge.com" target="_blank" rel="noreferrer">
+              Begin a Conversation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── CTA CARD ───────────────── -->
+  <section class="block">
+    <div class="container">
+      <div class="cta-card reveal">
+        <span class="corner tl" aria-hidden></span>
+        <span class="corner tr" aria-hidden></span>
+        <span class="corner bl" aria-hidden></span>
+        <span class="corner br" aria-hidden></span>
+
+        <span class="eyebrow">An Invitation</span>
+        <h3 class="h-md italic-gold" style="margin-top: 1.5rem;">
+          Travel, <em>privately</em> arranged.
+        </h3>
+        <p class="body" style="margin-top: 1.5rem; max-width: 560px; margin-inline: auto;">
+          Whether the next chapter is a long-haul first class itinerary, a
+          private charter, or a quiet week on the coast — the conversation
+          begins with a single message.
+        </p>
+
+        <div class="actions">
+          <a class="btn-gold" href="https://www.pure-concierge.com" target="_blank" rel="noreferrer">
+            Send an Enquiry
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6h8M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+            </svg>
+          </a>
+          <a class="btn-ghost" href="https://wa.me/31622047498" target="_blank" rel="noreferrer">
+            WhatsApp the Team
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ───────────────── FOOTER ───────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="brand-line">PURE&nbsp;·&nbsp;FLIGHTS</span>
+    <span class="meta-line">The Journal · Vol. I · Spring</span>
+    <div class="links">
+      <a href="https://www.pure-concierge.com" target="_blank" rel="noreferrer">Pure-Concierge.com</a>
+      <a href="https://lunanovaresidences.com" target="_blank" rel="noreferrer">Luna Nova</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Staggered reveal on scroll
+  const els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add("in"), i * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+    els.forEach((el) => io.observe(el));
+  } else {
+    els.forEach((el) => el.classList.add("in"));
+  }
+</script>
+
+</body>
+</html>
